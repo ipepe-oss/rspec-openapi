@@ -79,8 +79,7 @@
                       },
                       "tags": {
                         "type": "array",
-                        "items": {
-                        }
+                        "items": {}
                       }
                     },
                     "required": [
@@ -92,9 +91,7 @@
                 "example": [
                   {
                     "name": "file.png",
-                    "tags": [
-
-                    ]
+                    "tags": []
                   }
                 ]
               }
@@ -345,9 +342,7 @@
     "/my_engine/eng_route": {
       "get": {
         "summary": "GET /my_engine/eng_route",
-        "tags": [
-
-        ],
+        "tags": [],
         "responses": {
           "200": {
             "description": "returns some content from the engine",
@@ -366,9 +361,7 @@
     "/my_engine/test": {
       "get": {
         "summary": "GET /my_engine/test",
-        "tags": [
-
-        ],
+        "tags": [],
         "responses": {
           "200": {
             "description": "returns the block content",
@@ -428,9 +421,7 @@
         ],
         "security": [
           {
-            "SecretApiKeyAuth": [
-
-            ]
+            "SecretApiKeyAuth": []
           }
         ],
         "responses": {
@@ -539,7 +530,7 @@
     },
     "/tables": {
       "get": {
-        "summary": "index",
+        "summary": "Get a list of tables",
         "tags": [
           "Table"
         ],
@@ -659,10 +650,12 @@
                         "format": "float"
                       },
                       "created_at": {
-                        "type": "string"
+                        "type": "string",
+                        "format": "date-time"
                       },
                       "updated_at": {
-                        "type": "string"
+                        "type": "string",
+                        "format": "date-time"
                       }
                     },
                     "required": [
@@ -763,10 +756,12 @@
                       "format": "float"
                     },
                     "created_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "updated_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     }
                   },
                   "required": [
@@ -907,10 +902,12 @@
                       "format": "float"
                     },
                     "created_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "updated_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     }
                   },
                   "required": [
@@ -1001,10 +998,12 @@
                       "format": "float"
                     },
                     "created_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "updated_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     }
                   },
                   "required": [
@@ -1154,10 +1153,12 @@
                       "format": "float"
                     },
                     "created_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "updated_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     }
                   },
                   "required": [
@@ -1193,9 +1194,7 @@
     "/test_block": {
       "get": {
         "summary": "GET /test_block",
-        "tags": [
-
-        ],
+        "tags": [],
         "responses": {
           "200": {
             "description": "returns the block content",

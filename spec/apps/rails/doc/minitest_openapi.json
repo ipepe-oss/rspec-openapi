@@ -3,7 +3,7 @@
   "info": {
     "title": "OpenAPI Documentation",
     "version": "1.0.0",
-    "description": "My beautiful hanami API",
+    "description": "My beautiful API",
     "license": {
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
@@ -15,6 +15,49 @@
     }
   ],
   "paths": {
+    "/additional_properties": {
+      "get": {
+        "summary": "index",
+        "tags": [
+          "AdditionalProperty"
+        ],
+        "responses": {
+          "200": {
+            "description": "returns some content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "required_key": {
+                      "type": "string"
+                    },
+                    "variadic_key": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "required": [
+                    "required_key",
+                    "variadic_key"
+                  ]
+                },
+                "example": {
+                  "required_key": "value",
+                  "variadic_key": {
+                    "gold": 1,
+                    "silver": 2,
+                    "bronze": 3
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/images": {
       "get": {
         "summary": "index",
@@ -299,15 +342,15 @@
         }
       }
     },
-    "/my_engine/eng/example": {
+    "/my_engine/eng_route": {
       "get": {
-        "summary": "example",
+        "summary": "GET /my_engine/eng_route",
         "tags": [
-          "Eng"
+
         ],
         "responses": {
           "200": {
-            "description": "returns the block content",
+            "description": "returns some content from the engine",
             "content": {
               "text/plain": {
                 "schema": {
@@ -328,7 +371,7 @@
         ],
         "responses": {
           "200": {
-            "description": "returns some content from the engine",
+            "description": "returns the block content",
             "content": {
               "text/plain": {
                 "schema": {
@@ -496,7 +539,7 @@
     },
     "/tables": {
       "get": {
-        "summary": "Get a list of tables",
+        "summary": "index",
         "tags": [
           "Table"
         ],
@@ -616,10 +659,12 @@
                         "format": "float"
                       },
                       "created_at": {
-                        "type": "string"
+                        "type": "string",
+                        "format": "date-time"
                       },
                       "updated_at": {
-                        "type": "string"
+                        "type": "string",
+                        "format": "date-time"
                       }
                     },
                     "required": [
@@ -720,10 +765,12 @@
                       "format": "float"
                     },
                     "created_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "updated_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     }
                   },
                   "required": [
@@ -864,10 +911,12 @@
                       "format": "float"
                     },
                     "created_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "updated_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     }
                   },
                   "required": [
@@ -958,10 +1007,12 @@
                       "format": "float"
                     },
                     "created_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "updated_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     }
                   },
                   "required": [
@@ -1111,10 +1162,12 @@
                       "format": "float"
                     },
                     "created_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "updated_at": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     }
                   },
                   "required": [
@@ -1178,5 +1231,6 @@
         "name": "Secret-Key"
       }
     }
-  }
+  },
+  "custom_field": "custom_value"
 }

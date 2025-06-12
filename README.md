@@ -1,4 +1,5 @@
-# rspec-openapi [![Gem Version](https://badge.fury.io/rb/rspec-openapi.svg)](https://rubygems.org/gems/rspec-openapi) [![test](https://github.com/exoego/rspec-openapi/actions/workflows/test.yml/badge.svg)](https://github.com/exoego/rspec-openapi/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/exoego/rspec-openapi/branch/master/graph/badge.svg?token=egYm6AlxkD)](https://codecov.io/gh/exoego/rspec-openapi) [![Ruby-toolbox](https://img.shields.io/badge/ruby-toolbox-a61414?cacheSeconds=31536000)](https://www.ruby-toolbox.com/projects/rspec-openapi)
+# rspec-openapi [![Gem Version](https://badge.fury.io/rb/rspec-openapi.svg)](https://rubygems.org/gems/rspec-openapi) [![test](https://github.com/exoego/rspec-openapi/actions/workflows/test.yml/badge.svg)](https://github.com/exoego/rspec-openapi/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/exoego/rspec-openapi/branch/master/graph/badge.svg?token=egYm6AlxkD)](https://codecov.io/gh/exoego/rspec-openapi) [![Ruby-toolbox](https://img.shields.io/badge/ruby-toolbox-a61414?cacheSeconds=31536000)](https://www.ruby-toolbox.com/projects/rspec-openapi) [![DeepWiki](https://img.shields.io/badge/See_on-DeepWiki-blue)](https://deepwiki.com/exoego/rspec-openapi)
+
 
 Generate OpenAPI schema from RSpec request specs.
 
@@ -52,7 +53,7 @@ end
 If you run the spec with `OPENAPI=1`,
 
 ```
-OPENAPI=1 rspec spec/requests/tables_spec.rb
+OPENAPI=1 bundle exec rspec spec/requests/tables_spec.rb
 ```
 
 It will generate [`doc/openapi.yaml` file](./spec/rails/doc/openapi.yaml) like:
@@ -186,6 +187,10 @@ RSpec::OpenAPI.summary_builder = ->(example) { example.metadata.dig(:example_gro
 # Generate a custom tags, given an RSpec example
 # This example uses the tags from the parent_example_group
 RSpec::OpenAPI.tags_builder = -> (example) { example.metadata.dig(:example_group, :parent_example_group, :openapi, :tags) }
+
+# Configure custom format for specific properties
+# This example assigns 'date-time' format to properties with names ending in '_at'
+RSpec::OpenAPI.formats_builder = ->(_example, key) { key.end_with?('_at') ? 'date-time' : nil }
 
 # Change the example type(s) that will generate schema
 RSpec::OpenAPI.example_types = %i[request]
