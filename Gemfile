@@ -26,6 +26,7 @@ group :test do
   gem 'simplecov', git: 'https://github.com/exoego/simplecov.git', branch: 'branch-fix'
   gem 'simplecov-cobertura'
   gem 'super_diff'
+  gem 'mutex_m'
 end
 
 group :development do
