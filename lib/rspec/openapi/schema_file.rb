@@ -3,6 +3,8 @@
 require 'fileutils'
 require 'yaml'
 require 'json'
+require 'date' # Added
+require 'time' # Added
 
 # TODO: Support JSON
 class RSpec::OpenAPI::SchemaFile
@@ -24,7 +26,8 @@ class RSpec::OpenAPI::SchemaFile
   def read
     return {} unless File.exist?(@path)
 
-    RSpec::OpenAPI::KeyTransformer.symbolize(YAML.safe_load(File.read(@path))) # this can also parse JSON
+    # The YAML.safe_load call is updated here
+    RSpec::OpenAPI::KeyTransformer.symbolize(YAML.safe_load(File.read(@path), permitted_classes: [Date, Time]))
   end
 
   # @param [Hash] spec
@@ -43,8 +46,12 @@ class RSpec::OpenAPI::SchemaFile
     return content if RSpec::OpenAPI.comment.nil?
 
     comment = RSpec::OpenAPI.comment.dup
-    comment << "\n" unless comment.end_with?("\n")
-    "#{comment.gsub(/^/, '# ').gsub(/^# \n/, "#\n")}#{content}"
+    comment << "
+" unless comment.end_with?("
+")
+    "#{comment.gsub(/^/, '# ').gsub(/^#
+/, "#
+")}#{content}"
   end
 
   def json?
